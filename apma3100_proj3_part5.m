@@ -86,7 +86,20 @@ for i = 1:size(all_sample_means, 1)
     in_range_zs(i,:) = [count_z_1 count_z_2 count_z_3 count_z_4 count_z_5 count_z_6 count_z_7];
 end
 
-
+prob_less_than_z_j = in_range_zs/550;
+max_abs_difference = -1;
+maximum_distance_from_mean = [0 0 0 0];
+gaussian_cdf_probabilities = normcdf(z_j);
+for t = 1:4 %iterate each row
+    for i = 1:length(gaussian_cdf_probabilities) %iterate each z_j value
+        difference = abs(prob_less_than_z_j(t,i) - gaussian_cdf_probabilities(i));
+        if difference > max_abs_difference
+            max_abs_difference = difference;
+        end
+    end
+    maximum_distance_from_mean(t) = max_abs_difference;
+    max_abs_difference = -1;
+end
 
 %turns a set of sample means into a set of z-scores based on a sample
 %average and variance
