@@ -8,10 +8,14 @@ F_ = F(x);
 figure(1)
 plot(x,f_);
 title("PDF")
+xlabel("Distance from T (in)")
+ylabel("Probability")
 grid on
 figure(2)
 plot(x,F_);
 title("CDF")
+xlabel("Distance from T (in)")
+ylabel("Cumulative Probability")
 grid on
 
 p = [0.5 0.7 0.9];

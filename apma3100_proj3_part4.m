@@ -101,10 +101,17 @@ end
     nvec = ones(size(this_sample_means))*n(i);
     scatter(nvec,this_sample_means);
  end
- axis([9 1100 50 100])
+ axis([9 1100 40 110])
  xticks(n);
  xlabel("Sample size (n)");
- ylabel("Sample Average");
+ ylabel("Sample Average (in)");
+ title("Sample Mean Estimations")
+ % Real mean calculated per Rayleigh mean - 1/a*sqrt(pi/2)
+ real_mean = 71.4389;
+ 
+ plot([1 1200], [71.4389 71.4389],'k--')
+ text(110, 69, "Real \mu")
+ 
  hold off
 
 function oldSeed = reportLastSeed()
