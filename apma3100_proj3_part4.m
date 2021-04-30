@@ -84,6 +84,22 @@ end
 % samples (those j values from above) on the x-axis and the means on the y
 % axis
 
+ n = [10, 30, 50, 100, 250, 500, 1000];
+ figure(1)
+ semilogx([0],[0]);
+ hold on
+ grid on
+ for i = 1:7
+    this_sample_means = all_sample_means(i,:);
+    nvec = ones(size(this_sample_means))*n(i);
+    scatter(nvec,this_sample_means);
+ end
+ axis([9 1100 50 100])
+ xticks(n);
+ xlabel("Sample size (n)");
+ ylabel("Sample Average");
+ hold off
+
 function oldSeed = reportLastSeed()
     global x_n_minus_1
     oldSeed = x_n_minus_1;
