@@ -101,6 +101,36 @@ for t = 1:4 %iterate each row
     max_abs_difference = -1;
 end
 
+%% Plots
+
+% ~~~~~~~ All in one Plot ~~~~~~~ % 
+
+% z_ = linspace(-2.5,2.5);
+% figure(1)
+% plot(z_, normcdf(z_));
+% grid on;
+% hold on ;
+% for i = 1:4
+%     %scatter(z_j, prob_less_than_z_j(i,:))
+%     errorbar(z_j,prob_less_than_z_j(i,:),ones(size(z_j))*maximum_distance_from_mean(i),'o');
+% end
+% hold off;
+
+% ~~~~~~~ Individual Plots ~~~~~~~% 
+
+z_ = linspace(-2.5,2.5);
+for i = 1:4
+    figure(i)
+    plot(z_, normcdf(z_));
+    grid on;
+    hold on;
+    %scatter(z_j, prob_less_than_z_j(i,:))
+    errorbar(z_j,prob_less_than_z_j(i,:),ones(size(z_j))*maximum_distance_from_mean(i),'o');
+    hold off;
+end
+
+%% Functions
+
 %turns a set of sample means into a set of z-scores based on a sample
 %average and variance
 function z_n = transform(m_n, mu, sigma)
